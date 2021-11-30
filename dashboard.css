@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    max-width: 1366px; height: 70px;
+    margin: 0 auto;
+    margin-top: 0px;
+    z-index: 2000;
+    color: #252b3b;
+    background: #fff;
+}
+
+.header-container {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    width: 200px; height: auto;
+}
+.logo img {
+    width: 140px; height: auto;
+}
+.user {
+    align-items: center;
+    height: auto;
+    display: flex;
+}
+.user-foto, .user-name, .user-exit {
+    padding-left: 12px;
+}
+.user-foto {
+    font-size: 28px;
+    color: #589708;
+}
+
+
+
+.toggle-btn {
+    display: none;
+}
+.topnav {
+    max-width: 100%; height: 50px;
+    margin: 0 auto;
+    align-items: center;
+    background-color: #252b3b;
+    color: #fff;
+    padding: 0px calc(12px);
+    box-shadow: rgb(0 0 0 / 8%) 0px 1px 1px;
+    margin-top: 0;
+    position: relative;
+    left: 0px;
+    right: 0px;
+    z-index: 2000;
+}
+#sidebar {
+    max-width: 1366px; height: 50px;
+    margin: 0 auto;
+    align-items: center;
+}
+.menu {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.submenu{
+    margin-top: 10px;
+    color: #fff;
+    background: #252b3b;
+    padding: 26px;
+    border-bottom-right-radius:12px;
+    border-bottom-left-radius: 12px;
+    position: absolute;
+}
+.submenu li {
+    padding: 12px 0;
+}
+.submenu li a {
+    color: #fff;
+}
+
+.menu li {
+    width: auto;
+    list-style: none;
+    padding: 0 80px 0 0;
+}
+.menu > li > a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+}
+.menu li a {
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.4s;
+}
+.menu li a:hover {
+    text-decoration: underline;
+}
+.menu li a i {
+    padding-right: 12px;
+    color: #6ab40a;
+}
+.menu li a .icon-right {
+    padding-left: 12px;
+    font-size: 12px;
+    transition: all 0.4s;
+}
+.rotate{
+    -moz-transition: all 2s linear;
+    -webkit-transition: all 2s linear;
+    transition: all 2s linear;
+}
+.rotate.down{
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+@media screen and (max-width:900px) {
+    header {
+        padding: 0px;
+        border-bottom: 1px solid #252b3b;
+    }
+    .logo {
+        width: auto; height: auto;
+        padding: 0 12px;
+    }
+    .logo img {
+        width: 120px; height: auto;
+        transform: translate(0,6px);
+    }
+    #sidebar {
+        max-width: 100%; height: 50px;
+        margin: 0 auto;
+        align-items: center;
+    }
+    .topnav {
+        max-width: 100%; height: 50px;
+        align-items: center;
+        background-color: #fff;
+        color: #fff;
+        box-shadow: none;
+        padding: 0px calc(12px);
+        margin-top: 0px;
+        position: relative;
+        left: 0px;
+        right: 0px;
+        z-index: 0;
+    }
+    .toggle-btn {
+        display: block;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        padding: 0 14px 0 22px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #252b3b;
+        font-weight: 200;
+        animation: sacudir 4s infinite;
+    }
+    #sidebar {
+        position: absolute;
+        width: 240px; height: auto;
+        left: 0px;
+        transition: all 200ms linear;
+        z-index: 2000;
+        border-radius: 0;
+    }
+    #sidebar.active {
+        left: -290px;
+    }
+    .menu {
+        height: 100%;
+        display: grid;
+        margin: 0px 0;
+        padding: 20px;
+        border-bottom-right-radius: 12px;
+        background: #252b3b;
+    }
+    .menu li {
+        padding: 12px 0;
+    }
+    .submenu li a {
+        color: #fff;
+    }
+    .submenu{
+        margin-top: 10px;
+        color: #fff;
+        background: #252b3b;
+        padding: 14px 0;
+        border-bottom-right-radius:12px;
+        border-bottom-left-radius: 12px;
+    }
+    .indicenav {
+        max-width: 100%; height: auto;
+        margin: 0px auto;
+        margin-top:0px;
+        transform: translate(0, -50px);
+        padding: 0 8px;
+    }
+}
+
+
+
+.indicenav {
+    max-width: 1366px; height: 20px;
+    margin: 20px auto;
+    margin-top:20px;
+}
+.indicenav > a {
+    color: #252b3b;
+    text-decoration: none;
+    font-size: 14px;
+}
+.indicenav  i {
+    padding: 0 12px;
+    font-size: 12px;
+}
+
+#matriz-wrapper {
+    width: 100%; height: 700px;
+    overflow: hidden;
+    overflow-y: scroll;
+    background: #ebebeb;
+}
+ @media screen and (max-width:900px) {
+    #matriz-wrapper {
+        width: 1400px; height: 500px;
+        overflow: hidden;
+        overflow-y: scroll;
+        overflow-x: auto;
+        background: #ebebeb;
+    }
+ }
+.matriz-container {
+    max-width: 1366px; height: 20px;
+    margin: 20px auto;
+}
+.matriz-header {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+}
+.line, .mecanico, .electricista{
+    display: flex;
+}
+.line {
+    width: 100%;
+    margin: 12px 0;
+    border: 1px solid rgb(173, 173, 173);
+    display: flex;
+    justify-content: space-between;
+}
+.linename {
+    width: 600px;
+    text-align: right;
+    background: lightblue;
+    padding: 0px 12px;
+    margin-right: 100px;
+}
+.electricista, .mecanico, .porcentajes{
+    width: 200px;
+    margin: 0px auto;
+    text-align: center;
+    margin-left: 0px;
+}
+.numeros {
+    margin: 0 20px;
+}
+
+.porcentajes {
+    background: #6ab40a;
+}
+
+
+
+.matriz-center {
+    height: 200px;
+    align-items: center;
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    align-items: center;
+}
+.codigo {
+    width: 200px;
+    margin-left: -70px;
+    align-items: center;
+    transform: rotate(-90deg);
+    background: lightseagreen;
+    padding: 12px 0;
+    text-align: center;
+}
+.tipo {
+    width: 520px;
+    text-align: center;
+}
+.personainfo, .personacont{
+    display: flex;
+    padding: 12px 0;
+    text-align: left;
+}
+.personainfo {
+    margin-left: -30px;
+    background: lightcoral;
+}
+.personacont {
+    margin-left: -140px;
+    padding: 0 12px;
+}
+.legajo {
+    margin: 0 12px;
+    padding: 0px;
+    font-weight: 900;
+}
+.contenido {
+    margin: 0 12px;
+}
+.personainfo, .personacont {
+    transform: rotate(-90deg);
+}
+.personainfo2 {
+    margin-left: -136px;
+    background: lightcoral;
+    display: flex;
+    padding: 12px 0;
+    text-align: left;
+    transform: rotate(-90deg);
+}
+.tituloporcentajes {
+    transform: rotate(-90deg);
+    margin-left: 26px
+}
+.segun1  {
+    background: lightseagreen;
+    padding: 12px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.segun2 {
+    background: lightslategrey;
+    padding: 12px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.segun3 {
+    background: lightgoldenrodyellow;
+    padding: 12px 0;
+    text-align: center;
+}
+
+
+.matriz-bottom {
+    height: auto;
+    align-items: center;
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    align-items: center;
+}
+.filenumber {
+    margin-left: 20px;
+    text-align: center;
+}
+.capacidadtittle {
+    width: 520px;
+    text-align: left;
+    margin: 10px;
+    margin-left: 60px;
+}
+
+
+.number-opc {
+    display: flex;
+    margin-left: 70px;
+}
+.tilenumber {
+    padding: 0 22px;
+}
+
+.porcentajenum {
+    margin-left: 100px;
+    width: 170px;
+    justify-content: space-between;
+    display: flex;
+}
