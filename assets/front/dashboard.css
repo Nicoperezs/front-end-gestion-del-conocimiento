@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 
-*, body {
+body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background: #ebebeb;
+    font-size: 14px;
 }
 
 header {
-    max-width: 1366px; height: 70px;
+    max-width: 100%; height: 70px;
     margin: 0 auto;
     margin-top: 0px;
     z-index: 2000;
@@ -17,10 +19,13 @@ header {
 }
 
 .header-container {
+    max-width: 1366px; height: 70px;
+    margin: 0 auto;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #fff;
 }
 .logo {
     width: 200px; height: auto;
@@ -52,9 +57,8 @@ header {
     align-items: center;
     background-color: #252b3b;
     color: #fff;
-    padding: 0px calc(12px);
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 1px;
-    margin-top: 0;
+    margin-top: -16px;
     position: relative;
     left: 0px;
     right: 0px;
@@ -211,14 +215,27 @@ header {
         transform: translate(0, -50px);
         padding: 0 8px;
     }
+    #matriz {
+        width: 100%; height: 700px;
+        margin: 0px auto;
+        overflow: hidden;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding: 0;
+    }
 }
 
 
-
+#indice {
+    width: 100%; height: 40px;
+    background: #fff;
+    align-items: center;
+}
 .indicenav {
-    max-width: 1366px; height: 20px;
-    margin: 20px auto;
-    margin-top:20px;
+    max-width: 1366px; height: 40px;
+    margin: 0px auto;
+    margin-top:0px;
+    transform: translate(0, 10px);
 }
 .indicenav > a {
     color: #252b3b;
@@ -230,174 +247,147 @@ header {
     font-size: 12px;
 }
 
-#matriz-wrapper {
-    width: 100%; height: 700px;
-    overflow: hidden;
-    overflow-y: scroll;
-    background: #ebebeb;
-}
- @media screen and (max-width:900px) {
-    #matriz-wrapper {
-        width: 1400px; height: 500px;
-        overflow: hidden;
-        overflow-y: scroll;
-        overflow-x: auto;
-        background: #ebebeb;
-    }
- }
-.matriz-container {
-    max-width: 1366px; height: 20px;
-    margin: 20px auto;
-}
-.matriz-header {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-}
-.line, .mecanico, .electricista{
-    display: flex;
-}
-.line {
-    width: 100%;
-    margin: 12px 0;
-    border: 1px solid rgb(173, 173, 173);
-    display: flex;
-    justify-content: space-between;
-}
-.linename {
-    width: 600px;
-    text-align: right;
-    background: lightblue;
-    padding: 0px 12px;
-    margin-right: 100px;
-}
-.electricista, .mecanico, .porcentajes{
-    width: 200px;
+#matriz {
+    width: 1360px; height: 700px;
     margin: 0px auto;
-    text-align: center;
-    margin-left: 0px;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding: 0;
 }
-.numeros {
-    margin: 0 20px;
+.matriz-container {
+    width: 100%; height: 700px;
+    display: grid;
+    padding: 0 20px;
+    border-radius: 12px;
 }
-
-.porcentajes {
-    background: #6ab40a;
-}
-
-
-
-.matriz-center {
-    height: 200px;
-    align-items: center;
+#matriz-center {
+    width: 100%; height: 320px;
     display: flex;
     background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
     align-items: center;
+    border-radius: 12px;
+    padding: 0 20px;
 }
 .codigo {
-    width: 200px;
-    margin-left: -70px;
-    align-items: center;
-    transform: rotate(-90deg);
-    background: lightseagreen;
-    padding: 12px 0;
+    background: lightblue;
     text-align: center;
+    padding: 138px 0;
 }
-.tipo {
-    width: 520px;
-    text-align: center;
+
+.capacidades {
+    width: 400px;
+    text-align: right;
 }
-.personainfo, .personacont{
+.grupo {
+    width: auto;
     display: flex;
-    padding: 12px 0;
-    text-align: left;
+    margin-left: -2px;
 }
-.personainfo {
-    margin-left: -30px;
-    background: lightcoral;
-}
-.personacont {
-    margin-left: -140px;
-    padding: 0 12px;
+.grupo-header {
+    width: 280px;
+    display: flex;
+    transform: rotate(-90deg);
+    background: lightblue;
+    padding: 8px;
 }
 .legajo {
-    margin: 0 12px;
-    padding: 0px;
-    font-weight: 900;
+    transform: translate(14px,0);
+    font-weight: 700;
 }
-.contenido {
-    margin: 0 12px;
+.grupo-name{
+    transform: translate(90px,0);
+    font-weight: 700;
 }
-.personainfo, .personacont {
+.grupo-personas{
+    display: flex;
+    transform: translate(-100px,0);
+    margin-right: -200px;
+}
+.persona {
+    width: auto;
+    display: flex;
+    margin: 0 -120px;
     transform: rotate(-90deg);
 }
-.personainfo2 {
-    margin-left: -136px;
+.persona-legajo {
+    transform: translate(12px, 0);
+    width: auto;
+    text-align: left;
+}
+.persona-name {
+    width: 240px;
+    transform: translate(12px, 0);
+    margin-left: 0px;
+    text-align: center;
+}
+.box-bk {
+    display: flex;
+    width: auto;
+    margin-left: 120px;
+    text-align: center;
+}
+.left-box {
+    background: lightblue;
+}
+.center-box {
     background: lightcoral;
-    display: flex;
-    padding: 12px 0;
-    text-align: left;
+}
+.right-box {
+    background: lightgreen;
+}
+.left-box,.center-box,.right-box {
+    width: 280px;
     transform: rotate(-90deg);
-}
-.tituloporcentajes {
-    transform: rotate(-90deg);
-    margin-left: 26px
-}
-.segun1  {
-    background: lightseagreen;
-    padding: 12px 0;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.segun2 {
-    background: lightslategrey;
-    padding: 12px 0;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.segun3 {
-    background: lightgoldenrodyellow;
-    padding: 12px 0;
-    text-align: center;
+    margin: 0 -120px;
+    padding: 8px;
 }
 
 
-.matriz-bottom {
-    height: auto;
-    align-items: center;
-    display: flex;
+#matriz__bottom {
+    width: 100%; height: auto;
+    display: grid;
     background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
     align-items: center;
+    border-radius: 12px;
+    padding: 0 20px;
+    margin: 20px 0;
 }
-.filenumber {
-    margin-left: 20px;
+.code__line {
+    display: flex;
+    border-bottom: 1px solid #ebebeb;
+}
+.code__line__number {
+    width: 51.11px;
     text-align: center;
 }
-.capacidadtittle {
-    width: 520px;
-    text-align: left;
-    margin: 10px;
-    margin-left: 60px;
+.code__line__type {
+    width: 400px;
+    text-align: right;
+    margin-right: 29px;
 }
-
-
-.number-opc {
+.code__line__column {
+    width: auto;
+    background: lightskyblue;
+    padding: 0 14px;
+}
+.code__line__number__container {
     display: flex;
-    margin-left: 70px;
+    margin-left: 98px;
 }
-.tilenumber {
-    padding: 0 22px;
-}
-
-.porcentajenum {
-    margin-left: 100px;
-    width: 170px;
-    justify-content: space-between;
+.code__line__number__area {
+    width: auto;
+    margin-left: 0px;
     display: flex;
+    margin-right: 35px;
+}
+.code__line__column__person {
+    display: flex;
+    margin-left: 22px;
+}
+.code__line__column__person__cant {
+    width: 47px;
+    padding: 0 0px;
+    margin-left: -0.2px;
+    text-align: center;
 }

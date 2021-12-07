@@ -1,57 +1,62 @@
 var data;
-/* sendJSON('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/todos/capacidades.php',{
-	API_KEY:'7c095b66dc21c694706e7ae16e1c0565'
-	,sectorID:2
-}) */
 axios.get('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/todos/capacidades.php'
 	,{params:{
 		API_KEY:'7c095b66dc21c694706e7ae16e1c0565'
 		,sectorID:2
 	}}
-)//?API_KEY=7c095b66dc21c694706e7ae16e1c0565&sectorID=2')
-	// .then(res=>res.json())
+)
 	.then(res=>{
 		data=res.data;
 
-		let cont=gEt('cont');
-		let capacidadtittle=gEt('capacidadtittle');
-		let habilidades=Object.entries(data.capacidades);
-		for(let habilidad of habilidades){
-			addElement(cont,['DIV',{class:'filenumber',innerText:habilidad[0]}]);
-			addElement(capacidadtittle,['DIV',{class:'captittle',innerText:habilidad[1]}]);
+		// Ponemos todas las habilidades y guardamos el contenedor de los valores.
+		let bottom=gEt('matriz__bottom');
+		let habilidadesContainers=[];
+		for(let habilidad of Object.entries(data.capacidades)){
+			habilidadesContainers.push([
+				habilidad[0]
+				,addElement(bottom,['DIV',{class:'code__line',children:[
+					['DIV',{class:'code__line__number',innerText:habilidad[0]}]
+					,['DIV',{class:'code__line__type',innerText:habilidad[1]}]
+					,['DIV',{class:'code__line__number__container'}]
+				]}]).children[2]
+			]);
 		}
 
-		let habilidadesHeaderPersonas=gEt('habilidades-header');
-		let numberOpc=gEt('number-opc');
+		// Iteramos los puestos
+		let header=gEt('matriz-center-grupo');
 		for(let puesto of Object.values(data.puestos)){
-			addElement(habilidadesHeaderPersonas,['DIV',{class:'personainfo',children:[
-				['DIV',{class:'contenido',innerText:'Legajo'}]
-				,['DIV',{class:'contenido',innerText:puesto.descripcion}]
-			]}]);
-			addElement(numberOpc,['DIV',{
-				class:"tilenumber"
-				,style:{background: "lightseagreen"}
-				,children:habilidades.map(hab=>['DIV',{class:'numberbox',innerText:puesto.vectorCapacidades[hab[0]]||''}])
-			}]);
-			for(let empleado of Object.values(data.empleados).filter(emp=>emp.puestoID==puesto.ID)){
-				addElement(habilidadesHeaderPersonas,['DIV',{class:'personacont',children:[
-					['DIV',{class:'legajo',innerText:empleado.legajo}]
-					,['DIV',{class:'profesion',innerText:empleado.nombre+' '+empleado.apellido}]
-				]}]);
-				addElement(numberOpc,['DIV',{
-					class:"tilenumber"
-					,children:habilidades.map(hab=>['DIV',{
-						class:'numberbox'
-						,innerText:(cap=>cap==undefined?'':cap)(empleado.vectorCapacidades[hab[0]])
-					}])
-				}]);
+			let columnPerson={};
+			// Ponemos las habilidad del puesto si la hay, y el contenedor de los valores de las personas.
+			for(let habilidadContainer of habilidadesContainers){
+				let habilidadID=habilidadContainer[0];
+				columnPerson[habilidadID]=addElement(
+					habilidadContainer[1]
+					,['DIV',{class:'code__line__number__area',children:[
+						['DIV',{class:'code__line__column',innerText:puesto.vectorCapacidades[habilidadID]||''}]
+						,['DIV',{class:'code__line__column__person'}]
+					]}]
+				).children[1];
 			}
+			// Ponemos el puesto en el encabezado
+			addElement(header,['DIV',{class:'grupo-header',children:[
+				['DIV',{class:'legajo',innerText:'Legajo'}]
+				,['DIV',{class:'grupo-name',innerText:puesto.descripcion}]
+				// Iteramos por las personas de este puesto.
+			]}],['DIV',{class:'grupo-personas',children:Object.values(data.empleados).filter(emp=>emp.puestoID==puesto.ID).map(emp=>{
+				// Ponemos cada habilidad del empleado en cada contenedor. También ponemos valores vacíos para rellenar.
+				for(let [habilidadID,contenedor] of Object.entries(columnPerson)){
+					let thisHabilidad=emp.vectorCapacidades[habilidadID];
+					addElement(
+						contenedor
+						,['DIV',{class:'code__line__column__person__cant',innerText:thisHabilidad==undefined?'':thisHabilidad}]
+					);
+				}
+				// Ponemos el nombre de la en el encabezado.
+				return ['DIV',{class:'persona',children:[
+					['DIV',{class:'persona-legajo',innerText:emp.legajo}]
+					,['DIV',{class:'persona-name',innerText:emp.nombre+' '+emp.apellido}]
+				]}]
+			})}]);
 		}
 
-		habilidadesHeaderPersonas.innerHTML+=`
-		<div class="tituloporcentajes">
-				<div class="segun1">A capacitar</div>
-				<div class="segun2">Cumplen lo Requerido</div>
-				<div class="segun3">% de cumplimiento</div>
-		</div>`;
 	});
