@@ -1,5 +1,5 @@
 var data;
-axios.get('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/todos/capacidades.php'
+axios.get('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/todos/habilidades.php'
 	,{params:{
 		API_KEY:'7c095b66dc21c694706e7ae16e1c0565'
 		,sectorID:2
@@ -11,7 +11,7 @@ axios.get('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/tod
 		// Ponemos todas las habilidades y guardamos el contenedor de los valores.
 		let bottom=gEt('matriz__bottom');
 		let habilidadesContainers=[];
-		for(let habilidad of Object.entries(data.capacidades)){
+		for(let habilidad of Object.entries(data.habilidades)){
 			habilidadesContainers.push([
 				habilidad[0]
 				,addElement(bottom,['DIV',{class:'code__line',children:[
@@ -32,7 +32,7 @@ axios.get('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/tod
 				columnPerson[habilidadID]=addElement(
 					habilidadContainer[1]
 					,['DIV',{class:'code__line__number__area',children:[
-						['DIV',{class:'code__line__column',innerText:puesto.vectorCapacidades[habilidadID]||''}]
+						['DIV',{class:'code__line__column',innerText:puesto.vectorHabilidades[habilidadID]||''}]
 						,['DIV',{class:'code__line__column__person'}]
 					]}]
 				).children[1];
@@ -45,7 +45,7 @@ axios.get('https://siecons.com/libs/PHP/ldc-control-capacitaciones/empleados/tod
 			]}],['DIV',{class:'grupo-personas',children:Object.values(data.empleados).filter(emp=>emp.puestoID==puesto.ID).map(emp=>{
 				// Ponemos cada habilidad del empleado en cada contenedor. También ponemos valores vacíos para rellenar.
 				for(let [habilidadID,contenedor] of Object.entries(columnPerson)){
-					let thisHabilidad=emp.vectorCapacidades[habilidadID];
+					let thisHabilidad=emp.vectorHabilidades[habilidadID];
 					addElement(
 						contenedor
 						,['DIV',{class:'code__line__column__person__cant',innerText:thisHabilidad==undefined?'':thisHabilidad}]

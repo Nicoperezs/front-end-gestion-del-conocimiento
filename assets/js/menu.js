@@ -1,14 +1,7 @@
-$(document).ready(function(){
-    $('.menu li:has(ul)').click(function(e){
-        e.preventDefault();
-
-        if ($(this).hasClass('activado')) {
-            $(this).removeClass('activado');
-            $(this).children('ul').slideUp();
-        } else {
-            $(this).addClass('activado');
-            $(this).children('ul').slideDown();
-
-        }
-    });
-});
+$('.nav__toggle').on('click', function() {
+    $('.nav, .mobile-mask').toggleClass('show');
+  });
+  
+  $('.mobile-mask').on('click', function() {
+    $('.nav, .mobile-mask').removeClass('show');
+  });
